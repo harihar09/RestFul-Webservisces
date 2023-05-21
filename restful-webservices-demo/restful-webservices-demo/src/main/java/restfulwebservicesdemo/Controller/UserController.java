@@ -3,15 +3,13 @@ package restfulwebservicesdemo.Controller;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import restfulwebservicesdemo.Domain.User;
 import restfulwebservicesdemo.ExceptionHandler.UserNotFound;
-import restfulwebservicesdemo.UserDAO;
+import restfulwebservicesdemo.DAO.UserDAO;
 
 import java.net.URI;
-import java.time.LocalDate;
 import java.util.List;
 
 @RestController
