@@ -1,6 +1,10 @@
 package restfulwebservicesdemo.Controller;
 
 import jakarta.validation.Valid;
+import org.aspectj.bridge.Message;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,11 +15,14 @@ import restfulwebservicesdemo.DAO.UserDAO;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
 
+     @Autowired
+    private MessageSource messageSource;
     // inject DAOService dependency
     private UserDAO userDAOService;
 
@@ -59,5 +66,11 @@ public class UserController {
             return new ResponseEntity("successfully removed", HttpStatus.OK);
         else
             throw new UserNotFound(id + " was either removed or not found");
+    }
+
+    @GetMapping("/i18n")
+    public String internationlised(){
+        Locale locale = LocaleContextHolder.getLocale();
+       return messageSource.getMessage("good.morning.message",null,"Default Message",locale);
     }
 }
