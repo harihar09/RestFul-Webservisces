@@ -1,4 +1,4 @@
-package restfulwebservicesdemo;
+package restfulwebservicesdemo.DAO;
 
 import org.springframework.stereotype.Component;
 import restfulwebservicesdemo.Domain.User;
