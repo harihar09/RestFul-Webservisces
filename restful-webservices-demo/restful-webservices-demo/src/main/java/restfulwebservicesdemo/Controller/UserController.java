@@ -25,13 +25,13 @@ public class UserController {
     }
 
     // get all users
-    @GetMapping("/")
+    @GetMapping(value = "/",produces = {"application/json"})
     public ResponseEntity<List<User>> getAllUsers() {
         return ResponseEntity.ok(userDAOService.getUsers());
     }
 
     // get user
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}",produces = {"application/xml"})
     public ResponseEntity<User> getUser(@PathVariable String id) {
         User user = userDAOService.getUser(id);
         if (user == null)
